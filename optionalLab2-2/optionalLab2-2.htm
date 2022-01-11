@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Optional Lab 2-2: Mortgage Calculator</title>
+</head>
+
+<body>
+<script language="JavaScript" type="text/javascript">
+// Calculates the payments and updates for fields to
+// display the result
+function calcpayment() {
+   var amt = document.frm.amt.value;
+   var ir = document.frm.ir.value / 1200;
+   var term = document.frm.term.value * 12;
+   var total=1;
+
+   for (i=0;i<term;i++) {
+      total = total * (1 + ir);
+   }
+   mp = amt * ir / ( 1 - (1/total));
+
+  // Use Math object to chop all numbers after 2 digits
+  document.frm.payment.value = Math.round(mp*100)/100;
+  document.frm.total.value = Math.round(mp * term *100)/100 ;
+}
+</script>
+<h1 style="text-align: center; color: blue">CIW JavaScript Specialist</h1>
+<h2 style="text-align: center; color: green">JavaScript Mortgage Calculator</h2>
+<hr />
+<center>
+<form name="frm">
+<table bgcolor="black" cellpadding="2"><tr><td>
+<table bgcolor="wheat" cellspacing="10">
+<tr>
+  <td>Mortgage amount:</td>
+  <td><input type="text" name="amt" /></td>
+</tr>
+
+<tr>
+  <td>Yearly interest rate:</td>
+  <td><input type="text" name="ir" /></td>
+</tr>
+
+<tr>
+  <td>Term (in years):</td>
+  <td><input type="text" name="term" /></td>
+</tr>
+
+<tr >
+<td colspan="2" width="100%">
+<input type="button" value="Click to Calculate Monthly Payment"
+  onclick="calcpayment();" />
+</td>
+</tr>
+
+<tr><td colspan="2"><hr/></td></tr>
+ <tr>
+  <td>Monthly payment:</td>
+  <td><input type="text" name="payment" /></td>
+</tr>
+
+ <tr>
+  <td>Total payments:</td>
+  <td><input type="text" name="total" /></td>
+</tr>
+
+</table>
+</td></tr></table>
+</form>
+</center>
+
+
+</script>
+
+
+</body>
+</html>

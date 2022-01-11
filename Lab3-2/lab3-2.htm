@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Lab 3-2</title>
+
+    <script type="text/javascript">
+        //<--
+
+        /******************************************************
+        Define a function that takes arguments on function call
+        ******************************************************/
+
+        /******************************************************
+        Define a function that takes returns a value
+        ******************************************************/
+
+        //-->
+        function getName(name) {
+            alert("This function has been passed with an argument: " + name);
+        }
+        function getAge() {
+            var age = 25;
+            return age;
+        }
+    </script>
+
+</head>
+
+<body>
+
+    <h3>CIW JavaScript Specialist</h3>
+    <hr />
+
+    <!-- Add an onclick event handler to call the function -->
+
+    <form name="myForm">
+        <input type="button" name="input1" value="Call Function with arguments" onclick="getName('Curtis');" /><br />
+        <input type="button" name="input2" value="Call Function with return"
+            onclick="alert('This value was returned from a function: ' + getAge());" />
+    </form>
+
+</body>
+
+</html>
