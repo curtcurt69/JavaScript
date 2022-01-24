@@ -9,7 +9,7 @@
 
 
     function writeToDocument() {
-      var textColor, backColor, pageTitle;
+      var textColor, backColor, bgcolor, fgcolor, pageTitle;
       var yourText, pageContent, docWindow;
 
       textColor = prompt("Please enter a text color:", "white");
@@ -19,18 +19,23 @@
 
       pageContent = "<html><head><title>";
       pageContent += pageTitle + "</title>";
-      pageContent += "<script>alert(\'The page ' + document.title + 'was created: '+ (document.lastModified); +'<\/script>";
-      pageContent += "</head ><body><strong>";
+      pageContent += "<script>alert('The page ' + document.title + ' was created: ' + document.lastModified); <\/script>";
+      pageContent += "</head><body><strong>" + yourText;
+
       pageContent += "</strong></body></html >";
-      docWindow = open("", "docWin", "width = 250, height = 150, resizable = 1, status = 1");
+
+      docWindow = open("", "docWin", "width=250, height=150, resizable=1, status=1");
       // Write your code here
-      with (docWindow.document) {
-        docWindow.open();
-        docWindow.backColor = bgColor;
-        docWindow.textColor = fgcolor;
-        docWindow.write(pageContent);
-        docWindow.close();
-      }
+      with (docWindow.document) { }
+      document.open();
+      backColor = bgcolor;
+      textColor = fgcolor;
+      document.write(pageContent);
+      docWindow.close();
+
+
+
+
     }
 
 //-->
