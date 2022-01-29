@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>CIW Products</title>
+
+    <script type="text/javascript">
+
+        var content, len;
+
+        function productObject(id, item, description, price, image) {
+            this.id = id;
+            this.item = item;
+            this.description = description;
+            this.price = price;
+            this.image = image;
+            this.displayOne = displayOne;
+        }
+
+        //Add products here
+        var products = new Array();
+        products[0] = new productObject("cp-01", "CIW Backpack",
+            "Black woven backpack, blue-green lettering", "$25.00",
+            "images/backpack.jpg");
+        products[1] = new productObject("cp-02", "CIW Hat",
+            "Brown canvas hat, blue-green lettering", "$20.00", "images/hat.jpg");
+        products[2] = new productObject("cp-03", "CIW Suede Jacket",
+            "Green suede, blue lettering", "$110.00", "images/suede.jpg");
+        products[3] = new productObject("cp-04", "CIW Rain Jacket",
+            "Green rainproof, blue lettering", "$100.00", "images/rain.jpg");
+        products[4] = new productObject("cp-05", "CIW Polo Shirt",
+            "White mesh polo, green lettering", "$30.00", "images/polo.jpg");
+        products[5] = new productObject("cp-06", "CIW Denim Shirt",
+            "Dark blue denim, blue lettering", "$50.00", "images/denim.jpg");
+        products[6] = new productObject("cp-07", "CIW Sweatshirt",
+            "Gray fleece pullover, green lettering", "$70.00", "images/sweat.jpg");
+        products[7] = new productObject("cp-08", "CIW Sport Shirt",
+            "Blue, blue-green lettering", "$30.00", "images/sport.jpg");
+        products[8] = new productObject("cp-09", "CIW Sweater",
+            "Blue scoop neck, short sleeve, green lettering", "$60.00",
+            "images/sweater.jpg");
+        products[9] = new productObject("cp-10", "CIW Notebook",
+            "Black leather, blue lettering", "$75.00", "images/notebook.jpg");
+
+        len = products.length;
+
+        function displayOne() {
+            content = "";
+            content += "<!DOCTYPE html><html><head><title>" + this.item + "</title></head>";
+            content += "<body><main><div style='text-align:center'>";
+            content += "<table style='width=90%'><tr><td colspan='2' style='text-align:center'>";
+            content += "<h3>item:<strong>" + this.item + "</strong></h3><hr /></td></tr>";
+            content += "<tr><td><strong>ID:</strong> " + this.id + "</td></tr>";
+            content += "<tr><td><strong>Description:</strong> " + this.description + "</td></tr>";
+            content += "<tr><td><strong>Price:</strong><strong style='color:#0000ff'> " + this.price + "</strong></td></tr>";
+            content += "<tr><td><img src= '" + this.image + "' height='75' width='75'/>" + "</td></tr>";
+            content += "</table><form>";
+            content += "<input type='button' value='ok' onclick='window.close();' />";
+            content += "</form></div> </main></body></html>";
+            oneWindow = open("", "OneWindow", "width=450,height=290");
+            newWindow(oneWindow);
+            oneWindowStatus = true;
+        }
+
+        function findItem() {
+            var i = 0;
+            while (i < len && products[i].id != document.prodForm.idText.value.toLowerCase()) {
+                i++;
+            }
+            if (i < len) {
+                var message = "";
+                message += "ID:\t" + products[i].id;
+                message += "\nItem:\t" + products[i].item;
+                message += "\n\n";
+                alert(message);
+            } else {
+                var message = "It appears you have entered a discontinued id.\n";
+                message += "Please try again.";
+                alert(message);
+            }
+        }
+
+        function showAll() {
+            content = "";
+            content += "<!DOCTYPE html><html><head><title>All CIW Products</title></head>";
+            content += "<body><main><div style='text-align:center'>";
+            content += "<table style='width:85%' border cellpadding='2'>";
+            content += "<tr><th colspan='2' style='text-align:center'>";
+            content += "CIW Product Information</th></tr>";
+            content += "<tr><th>Item</th><th>Price</th></tr>";
+
+            for (var i = 0; i < len; i++) {
+                content += "<tr><td>";
+                content += "<a href='javascript:;' onclick='window.opener.products[" + i + "].displayOne();'>";
+                content += products[i].item + "</a></td>";
+                content += "<td>" + products[i].price + "</td></tr>";
+            }
+            content += "</table><form>";
+            content += "<input type='button' value='OK' onclick='window.close();' />";
+            content += "</form></div>";
+            content += "</div></main></body></html>";
+            fullWindow = open("", "AllWindow", "width=460,height=410,resizable=1");
+            newWindow(fullWindow);
+            fullWindowStatus = true;
+        }
+
+        // Opens windows for displayOne() and showAll()
+        function newWindow(x) {
+            x.document.close();
+            x.document.open();
+            x.document.write(content);
+            x.document.close();
+            x.moveTo(10, 10);
+            x.focus();
+        }
+
+            //-->
+    </script>
+</head>
+
+<body>
+    <main>
+        <div>
+            <h2>CIW Products</h2>
+            <hr />
+            <form name="prodForm">
+                <table width="100%">
+                    <tr>
+                        <td>
+                            <select name="itemName">
+                                <script type="text/javascript">
+
+
+                                    for (var i = 0; i < len; i++) {
+                                        document.write("<option>" + products[i].item);
+                                    }
+
+                                        //-->
+                                </script>
+                            </select>
+                        </td>
+                        <td>
+                            <input type="button" value="Get Info"
+                                onclick=" var i = document.prodForm.itemName.selectedIndex; products[i].displayOne();" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Search by product ID:</strong> <input type="text" size="5" name="idText" /></td>
+                        <td><input type="button" value="Search" onclick="findItem();" /></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input type="button" value="Show All Products" onclick="showAll();" />
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </main>
+</body>
+
+</html>
