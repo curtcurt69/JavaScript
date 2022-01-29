@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Lab 8-2</title>
+
+    <script type="text/javascript">
+
+
+        // create a class here
+        function Device(name, brand) {
+            this.name = name;
+            this.brand = brand;
+            this.display = function () { document.write(`The name of the device is ${this.name} and its brand is ${this.brand}`); };
+        }
+
+
+        var dev1 = new Device("Vostro", "Dell");
+
+//-->
+    </script>
+</head>
+
+<body onload="dev1.display()">
+    <h3>CIW JavaScript Specialist</h3>
+    <hr />
+
+</body>
+
+</html>
