@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>Lab 9-1</title>
+
+  <script type="text/javascript">
+
+    function changeButton() {
+      if (document.getElementById('radiobuttonWebdev').checked === true) {
+        radioButton = document.getElementById('radiobuttonWebdev').value;
+        var header = document.getElementById('radiobuttonWebdev').value.innerHTML = "Web Developer!";
+        alert("Hello " + header);
+      }
+      if (document.getElementById('radiobuttonGovernment').checked === true) {
+        radioButton = document.getElementById('radiobuttonGovernment').value;
+        var header = document.getElementById('radiobuttonWebdev').value.innerHTML = "Uncle Sam!";
+        alert("Hello " + header);
+      }
+      if (document.getElementById('radiobuttonyoutube').checked === true) {
+        radioButton = document.getElementById('radiobuttonyoutube').value;
+        var header = document.getElementById('radiobuttonyoutube').value.innerHTML = "Streamer!";
+        alert("Hello " + header);
+      }
+      if (document.getElementById('radiobuttonAmazon').checked === true) {
+        radioButton = document.getElementById('radiobuttonAmazon').value;
+        var header = document.getElementById('radiobuttonAmazon').value.innerHTML = "Shopper!";
+        alert("Hello " + header);
+      }
+      if (document.getElementById('radiobuttonSoundcloud').checked === true) {
+        radioButton = document.getElementById('radiobuttonSoundcloud').value;
+        var header = document.getElementById('radiobuttonSoundcloud').value.innerHTML = "Musician!";
+        alert("Hello " + header);
+      }
+      getTest();
+    }
+
+  </script>
+</head>
+
+<body>
+  <h3>CIW JavaScript Specialist</h3>
+  <hr />
+  <form>
+    <p>Please select your favorite type of Web site:</p>
+    <input id="radiobuttonWebdev" type="radio" name="group1" value="Web_Development" checked>Web
+    Development</input><br />
+    <input id="radiobuttonGovernment" type="radio" name="group1" value="Government">U.S. Government</input><br />
+    <input id="radiobuttonyoutube" type="radio" name="group1" value="Youtube">Youtube</input><br />
+    <input id="radiobuttonAmazon" type="radio" name="group1" value="Amazon">Amazon</input><br />
+    <input id="radiobuttonSoundcloud" type="radio" name="group1" value="Soundcloud">SoundCloud</input><br />
+
+
+    <script type="text/javascript">
+
+      function getTest() {
+        document.write("<h3>CIW JavaScript Specialist</h3>");
+        document.write("<hr />");
+
+        if (radioButton == "Web_Development") {
+          document.write("<p>Here's a great site for Web developers:</p><a href=http://www.CIWcertified.com/>CIW Certified</a>");
+        }
+
+        if (radioButton == "Government") {
+          document.write("<p>Here's a great site if you're interested in U.S. government:</p><a href=http://www.whitehouse.gov/>The White House</a>");
+        }
+        if (radioButton == 'Youtube') {
+          document.write("<p>Here's a great site if you're interested in streaming:</p><a href=http://www.youtube.com/>Youtube</a>");
+        }
+
+        if (radioButton == 'Amazon') {
+          document.write("<p>Here's a great site if you're interested in shopping:</p><a href=http://www.amazon.com/>Amazon</a>");
+        }
+        if (radioButton == 'Soundcloud') {
+          document.write("<p>Here's a great site if you're interested in recording music:</p><a href=http://www.soundcloud.com/>SoundCloud</a>");
+        }
+      }
+
+    </script>
+
+    <p>
+      <input type="button" onclick="changeButton()" value="Click Here" />
+    </p>
+  </form>
+
+</body>
+
+</html>
