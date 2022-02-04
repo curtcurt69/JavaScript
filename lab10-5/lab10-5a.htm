@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Lab 10-5a</title>
+
+<script type="text/javascript">
+    function checkForm()
+    {
+        var str = '';
+        var elem = document.getElementById('myForm').elements;
+        for(var i = 0; i < elem.length; i++)
+        {
+            
+	str += "<strong>Type: </strong>" + elem[i].type + "&nbsp;&nbsp;";
+	str += "<strong>Name: </strong>" + elem[i].name + "&nbsp;&nbsp;";
+	str += "<strong>Value: </strong><em>" + elem[i].value + "</em>&nbsp;&nbsp;";
+	str += "<br />";
+			
+	if(elem[i].value.length < 1)
+	{
+	alert("Enter something for the field: " + elem[i].name);
+	return false;}
+        } 
+        document.getElementById('lblValues').innerHTML = str;
+    }
+</script>
+</head>
+
+<body>
+<h3>CIW JavaScript Specialist</h3>
+<hr />
+
+<form id="myForm" name="myForm" action="lab7-5a.htm">
+<p>
+Your Name: <br /><br />
+<input type="text" id="Your_Name" name="Your_Name" value="enter your name" />
+</p>
+<p>
+Interesting Fact About You: <br /><br />
+<textarea id="Interesting_Fact" name="Interesting_Fact">enter some text</textarea>
+</p>
+<input type="button" value="Submit Data" onclick="return checkForm(this.form);" />
+<input type="reset" value="Reset Form" >
+
+</form>
+<hr />
+<div id="lblValues"></div>
+</body>
+</html>
