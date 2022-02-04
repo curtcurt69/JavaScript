@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8" />
+<title>Lab 10-3a</title>
+
+<script type="text/javascript">
+<!--
+
+  function isSelected(form) {
+    var len = form.mySelect.length;
+ 
+ // Create for loop
+
+  for(var i = 0; i < len; i++) {
+    if(form.mySelect.options[i].selected)
+      alert("Value: " + form.mySelect.options[i].value);
+  }
+  } 
+
+//-->
+</script>
+</head>
+<body>
+<h3>CIW JavaScript Specialist</h3>
+<hr />
+<form name="myForm" id="myForm">
+
+<!-- Add onchange event handler -->
+
+<select name="mySelect">
+<option>Select an item</option>
+<option value="1">First option</option>
+<option value="2">Second option</option>
+<option value="3">Third option</option>
+</select>
+</form>
+</body>
+</html>
