@@ -11,14 +11,19 @@
 
       //Insert for statement here//
       for (var i = 0; i < elem.length; i++) {
+        str += "<strong>Type: </strong>" + elem[i].type + "&nbsp;&nbsp;";
+        str += "<strong>Name: </strong>" + elem[i].name + "&nbsp;&nbsp;";
+        str += "<strong>Value: </strong><em>" + elem[i].value + "<em>&nbsp;&nbsp;";
+        str += "<br />";
+
         if (elem[i].value.length < 1) {
           alert("Enter something for this field: " + elem[i].name);
-          var myText = document.getElementById(elem[i].name);
-          myText.focus();
+
           return false;
         }
-      }
 
+      }
+      document.getElementById("lblValues").innerHTML = str;
     }
   </script>
 </head>
@@ -27,7 +32,7 @@
   <h3>CIW JavaScript Specialist</h3>
   <hr />
 
-  <form id="myForm" name="myForm" action="lab7-5a.htm">
+  <form id="myForm" name="myForm" action="lab10-5a.htm">
     <p>
       Your Name: <br /><br />
       <input type="text" name="Your_Name" id="Your_Name" value="enter your name" />
@@ -37,6 +42,7 @@
       <textarea name="Interesting_Fact" id="Interesting_Fact">enter some text</textarea>
     </p>
     <input type="submit" value="Submit Data" onclick="return checkForm(this.form);" />
+    <input type="reset" value="Reset Form" />
 
   </form>
   <hr />
