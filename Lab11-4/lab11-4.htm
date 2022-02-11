@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Lab 11-4</title>
+    <script type="text/javascript">
+
+        var myColor = prompt("Please enter a hexadecimal color code (must be 6 characters, including 0 thru 9 and A thru F):", "FFFFFF");
+        var myName = prompt("Please enter your name:", "Cookie Monster");
+
+        if ((myColor == null) || (myColor == "") || (myColor.length < 6 || myColor.length > 6)) myColor = "#ffffff";
+
+        var keepCookie = (confirm("A cookie will be set. Delete cookie?")) ? "delete" : "keep";
+
+        if (keepCookie == "delete") {
+            document.cookie = "testCookie=" + "YColor=" + myColor + " " + "name=" + myName + ";expires=20-May-2025";
+            message = "Here is the cookie that was deleted:  ";
+            message += document.cookie;
+            alert(message);
+        }
+        else {
+            document.cookie = "testCookie=" + "YColor=" + myColor + " " + "name=" + myName + ";expires=20-May-2025"; // the expiry date must be somewhere in the future, or the cookie will not be set in Firefox or Chrome
+            message = "Here is the cookie that was set on your system:  ";
+            message += document.cookie;
+            alert(message);
+        }
+
+
+        var start = document.cookie.indexOf("YColor=");
+        start = start + 7;
+        var pos = "#" + document.cookie.substr(start, 6);
+        alert("Your background color will be: " + pos);
+
+        var nameLengthS = document.cookie.indexOf("name=");
+        nameLengthS = nameLengthS + 5;
+        var PersonName = document.cookie.substr(nameLengthS, 25);
+        alert("Your name is: " + PersonName);
+
+
+//-->
+    </script>
+</head>
+
+<body>
+    <h3>CIW JavaScript Specialist</h3>
+    <hr />
+    <script type="text/javascript">
+
+
+        if ((pos == null) || (pos == "")) pos = "#ffffff";
+        document.bgColor = pos;
+        document.write("Your background color is: " + document.bgColor + "<br />");
+        document.write("Your name is: " + window.PersonName + "<br />");
+        document.write("Cookie contents: " + document.cookie);
+        document.write();
+
+//-->
+    </script>
+</body>
+
+</html>
