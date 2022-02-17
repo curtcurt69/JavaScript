@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT zoo ((mammals, reptiles, birds))> 
+<!ELEMENT mammals ((species))>
+<!ELEMENT species (#PCDATA)>
+<!ELEMENT reptiles ((species))>
+<!ELEMENT birds ((species))>

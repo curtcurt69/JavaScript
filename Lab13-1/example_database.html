@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Example: Database and AJAX</title>
+</head>
+<body>
+<h2>CIW JavaScript Specialist</h2>
+<hr />
+<script type="text/javascript">
+function getXMLHttpRequest() 
+{
+    if (window.XMLHttpRequest) {
+        return new window.XMLHttpRequest;
+
+    }
+    else {
+        try {
+            return new ActiveXObject("MSXML2.XMLHTTP.3.0");
+        }
+        catch(ex) {
+			return null;
+			
+        }
+    }
+}
+
+http = getXMLHttpRequest(); 
+function requestCustomerInfo() {
+  http.open("GET", "customer.xml", true);
+  http.onreadystatechange=function() {
+	  
+		 if(http.readyState == 4) {
+			document.getElementById('DCustomerInfo').innerHTML = http.responseXML.documentElement.getElementsByTagName("Customer")[document.getElementById('CustomerID').value].getElementsByTagName("FirstName")[0].firstChild.nodeValue;
+    }
+  }
+  http.send(null);
+}
+</script>
+    <p>Please enter Customer ID: <input type="text" id="CustomerID" value="" /></p> 
+    <p><input type="button" value="Get Information" onclick="requestCustomerInfo()" /></p> 
+    First Name:<div id="DCustomerInfo"></div> 
+</body> 
+</html>

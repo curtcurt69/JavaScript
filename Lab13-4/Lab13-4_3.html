@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lab 13-4_3</title>
+    <script src="jquery-3.2.1.min.js" type="text/javascript"></script>
+</head>
+
+<body>
+<div id="demo">
+<h1>The XMLHttpRequest Object</h1>
+<button type="button" onclick="loadDoc()">Change Content</button>
+</div>
+
+<script>
+function loadDoc() {
+    $.ajax({
+        type: "POST",
+        url: "example1.txt", // There is no such file as example1.txt file.
+        data: {x: "y"},
+        dataType: "text",
+        success: function(result) {
+            document.getElementById("demo").innerHTML = result;
+        }, 
+        error: function(xhr) {
+            document.getElementById("demo").innerHTML = xhr.statusText;
+        },
+        fail:function(msg) {
+            document.getElementById("demo").innerHTML = msg;
+        }
+    });
+}
+</script>
+
+</body>
+</html>

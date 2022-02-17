@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8" />
+<head>
+<title>Lab 13-1</title>
+	<script language="JavaScript" src="ajax.js"></script>
+<script type="text/javascript">
+function ChangeData(str)
+{
+	document.getElementById('MyID').innerHTML = str;
+}
+</script>
+</head>
+
+<body>
+<h3>CIW JavaScript Specialist</h3>
+<hr />
+	<h2>AJAX Button Clicker</h2>
+	<p>This script shows how to use multiple external scripts that load dynamically when you click a button.</p>
+	<input type="button" value="Button 1" onclick="loadScript('Data1.js')" />
+	<input type="button" value="Button 2" onclick="loadScript('Data2.js')" />
+	<input type="button" value="Button 3" onclick="loadScript('Data3.js')" />
+	<div id="MyID">&nbsp;</div>
+	<hr />
+</body>
+</html>

@@ -1,0 +1,7 @@
+{
+	"parent":{
+		"child1" : "I am first Child",
+		"child2" : "I am second Child",
+		"child3" : "I a third child"
+	}
+}

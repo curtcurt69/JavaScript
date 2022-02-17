@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Lab 13-2</title>
+        <link href="style.css" rel="stylesheet" type="text/css">
+        <script src="script.js"></script>
+    </head>
+<body>
+<div id="mainform">
+    <div class="innerdiv">
+    <!-- Required Div Starts Here -->
+    <h2>Form Validation Using AJAX</h2>
+        <form action="#" id="myForm" method='post' name="myForm">
+            <h3>Fill Your Information!</h3>
+            <table>
+                <tr>
+                    <td>Username</td>
+                    <td><input id="username1" name="username" onblur="validate('username', this.value)" type="text"></td>
+                    <td><div id="username"></div></td>
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td><input id="password1" name="password" onblur="validate('password', this.value)" type="password"></td>
+                    <td><div id="password"></div></td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td><input id="email1" name="email" onblur="validate('email', this.value)" type="text"></td>
+                    <td><div id="email"></div></td>
+                </tr>
+                <tr>
+                    <td>Website</td>
+                    <td><input id="website1" name="website" onblur="validate('website', this.value)" type="text"></td>
+                    <td><div id="website"></div></td>
+                </tr>
+            </table>
+            <input onclick="checkForm()" type="button" value="Submit" />
+        </form>
+    </div>
+</div>
+</body>
+</html>

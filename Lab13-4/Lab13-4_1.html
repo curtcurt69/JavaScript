@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lab 13-4_1</title>
+    <script src="jquery-3.2.1.min.js" type="text/javascript"></script>
+</head>
+
+<body>
+<div id="demo"></DIV>
+<h1>The XMLHttpRequest Object</h1>
+<button type="button" onclick="loadDoc()">Change Content</button>
+
+<script>
+function loadDoc() {
+    $.ajax({
+        type: "GET",
+        url: "https://s3.amazonaws.com/jigyaasa_content_static/1d0-735/example.txt", //This is the URL for the example.txt file
+        data: {x: "y"},
+        dataType: "text",
+        headers: {"Access-Control-Allow-Origin": "*"},
+        success: function(result) {
+            document.getElementById("demo").innerHTML = result;
+        }, 
+        error: function(xhr) {
+            document.getElementById("demo").innerHTML = xhr.statusText;
+        },
+        fail:function(msg) {
+            document.getElementById("demo").innerHTML = msg;
+        }
+    });
+}
+</script>
+
+</body>
+</html>

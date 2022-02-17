@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <title>Hello World</title>
+   <script src="https://cdn.jsdelivr.net/react/0.14.0-rc1/react.js"></script>
+   <script src="https://cdn.jsdelivr.net/react/0.14.0-rc1/react-dom.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.24.0/babel.js"></script>
+</head>
+
+<body>
+   <div id="myDiv"></div>
+   <script type="text/jsx">
+
+         class Searching extends React.Component {
+            constructor(props) {
+               super(props) 
+               this.state = {
+                  filterString:''
+               }
+
+            }
+            handleChange(e) {
+               this.setState({filterString:e.target.value});
+            }
+            render() {
+               var librariesExample = this.props.items,
+               filterString = this.state.filterString.trim().toLowerCase();
+               if(filterString.length > 0) {
+                  librariesExample = librariesExample.filter(function(l){
+                     return l.name.toLowerCase().match(filterString);
+                  });
+               }
+               return(<div>
+                  <input type="text" value={this.state.filterString} onChange={this.handleChange.bind(this)} placeholder="Type here" />
+                  <ul>
+                  { librariesExample.map(function(l){
+                  return <li>{l.name} <br/><a href={l.url}>{l.url}</li>
+                  })}
+                  
+                  );
+            }
+         }
+         var librariesExample = [
+
+         { name: 'Backbone.js', url: 'https://backbonejs.org/'},
+         { name: 'AngularJS', url: 'https://angularjs.org/'},
+         { name: 'jQuery', url: 'http://jquery.com/'},
+         { name: 'Prototype', url: 'http://www.prototypejs.org/'},
+{ name: 'React', url: 'http://facebook.github.io/react/'},
+{ name: 'Ember', url: 'http://emberjs.com/'},
+{ name: 'Knockout.js', url: 'http://knockoutjs.com/'},
+{ name: 'Dojo', url: 'http://dojotoolkit.org/'},
+{ name: 'Mootools', url: 'http://mootools.net/'},
+{ name: 'Underscore', url: 'https://underscorejs.org/'},
+{ name: 'Lodash', url: 'http://lodash.com/'},
+{ name: 'Moment', url: 'http://momentjs.com/'},
+{ name: 'Express', url: 'http://expressjs.com/'},
+{ name: 'Koa', url: 'http://koajs.com/'}
+         ];
+
+         React.render(
+            <Searching items={librariesExample} />
+            document.getElementById('myDiv')
+         );
+    </script>
+</body>
+
+</html>

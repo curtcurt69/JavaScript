@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE zoo SYSTEM "test.dtd">
+<zoo>
+  <mammals>
+    <species> Lion </species>
+    <species> Zebra </species>
+    <species> Gorilla </species>
+  </mammals>
+  <reptiles>
+    <species> Alligator </species>
+    <species> Snake </species>
+    <species> Turtle </species>
+  </reptiles>
+  <birds>
+    <species> Eagle </species>
+    <species> Duck </species>
+  </birds>
+</zoo>
+
