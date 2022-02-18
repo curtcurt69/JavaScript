@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Lab 14-3</title>
+</head>
+<body>
+<canvas height="500" width="500" id="myCanvas2" style="display:none">
+    Your browser does not support the HTML5 canvas tag.
+</canvas>
+<button type="button" name="animated_rainbow" id="animated_rainbow" onclick="start_rainbow()">Animated Rainbow</button>
+
+<script>
+var myCanvas2 = document.getElementById("myCanvas2"),
+context = myCanvas2.getContext('2d'),
+set_time = null,
+end_angle=0,
+start_angle=0,
+canvas_width = myCanvas2.width/2,
+canvas_height = myCanvas2.height/2;
+function start_rainbow() { 
+	myCanvas2.style.display="block";
+    clearInterval(set_time);
+    start_angle=0;
+    end_angle=0;
+    context.clearRect(0,0,500,500);
+    set_time=setInterval(rainbow,50);
+    return false;
+}
+
+function rainbow(){
+	var begin_rainbow = start_angle * Math.PI;
+	var end_rainbow = end_angle * Math.PI;
+	end_angle = end_angle - 0.01;
+	if (end_angle < -1) {
+		clearInterval(set_time);
+	}
+	animate_rainbow(begin_rainbow, end_rainbow, 130, 'violet');
+	animate_rainbow(begin_rainbow, end_rainbow - 0.13, 140, 'indigo');
+	animate_rainbow(begin_rainbow, end_rainbow - 0.26, 150, 'blue');
+	animate_rainbow(begin_rainbow, end_rainbow - 0.39, 160, 'green');
+	animate_rainbow(begin_rainbow, end_rainbow - 0.52, 170, 'yellow');
+	animate_rainbow(begin_rainbow, end_rainbow - 0.65, 180, 'orange');
+	animate_rainbow(begin_rainbow, end_rainbow - 0.78, 190, 'red');
+	context.clearRect(20, canvas_height-4, 100, 150);
+}
+
+function animate_rainbow(begin_rainbow, end_rainbow, radius, rainbow_color) {
+	context.beginPath();
+	context.arc(canvas_width, canvas_height, radius, begin_rainbow, end_rainbow, true);
+	context.lineWidth =11;
+	context.strokeStyle = rainbow_color;
+	context.stroke();
+}
+</script>
+</body>
+</html>

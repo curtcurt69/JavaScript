@@ -1,0 +1,56 @@
+.map_show
+{
+    height: 450px;
+}
+.show_btn
+{
+    height: 50%;
+}
+.list
+{
+    font-size: 54px;
+    color: #A52A2A;
+    left: 143px;
+    top: 25px;
+    font-weight: 700;
+}
+.location_show
+{
+    width: 100%;
+    left: 50px;
+    top: 20px;
+}
+.nearby_location
+{
+    left: 100px;
+    bottom: 417px;
+}
+.button_show,
+.location_show,
+.nearby_location,
+.list,.button_show,
+.nearby_btn_show,
+.shift_icon
+{
+    position: relative;
+}
+.button_show
+{
+    bottom: 315px;
+    left: 130px;
+}
+.nearby_btn_show
+{
+    bottom: 227px;
+    left: 458px;
+}
+.shift_icon
+{
+    right: 20px;
+}
+.button_show,
+.nearby_btn_show
+{
+    height: 41px;
+    width: 314px;
+}

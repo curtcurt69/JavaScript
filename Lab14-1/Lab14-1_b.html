@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Lab 14-1</title>
+<script src="jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+// Check if the localStorage object exists
+if(localStorage){
+	$(document).ready(function(){
+		$(".save").click(function(){
+			// Get input name
+			var lastName = $("#lastName").val();
+			
+			// Store data
+    		sessionStorage.setItem("last_name", lastName);
+			alert("Your last name is saved.");
+		});
+		$(".access").click(function(){
+			// Retrieve data
+    		alert("Hi, " + localStorage.getItem("first_name") + " " + sessionStorage.getItem("last_name"));
+		});
+	});
+} else{
+    alert("Sorry, your browser do not support local storage.");
+}
+</script>
+</head>
+<body>
+    <form>
+    	<label>Last Name: <input type="text" id="lastName"></label>
+        <button type="button" class="save">Save Name</button>
+        <button type="button" class="access">Get Name</button>
+    </form>
+</body>
+</html>                            

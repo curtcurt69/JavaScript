@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Lab 14-2</title>
+        <script src="jquery-3.2.1.min.js"></script>
+    </head>
+    <body>
+        <h3>Geo Location Demo</h3>
+        <button type="button" style="float:left" onClick="getLocation()">Get Geo Location</button>
+        
+        <table id="GeoResults" style="display:none;float:left;margin:0 auto;clear:both"></table>
+        <table id="WeatherResults" style="display:none;float:right"></table>
+        <script>
+            
+            var lat = "";
+            var lon = "";
+            function getLocation() {
+                $.getJSON("http://ip-api.com/json/?callback=?", function(data) {
+                    var table_body = "";
+                    lat = data.lat;
+                    lon = data.lon;
+                    $.each(data, function(k, v) {
+                        table_body += "<tr><td>" + k + "</td><td><b>" + v + "</b></td></tr>";
+                    });
+                    $("#GeoResults").show();
+                    $("#GeoResults").html(table_body);
+                    var t_body = "";
+                    $.getJSON("http://api.openweathermap.org/data/2.5/weather?lat="+lat+"&lon="+lon+"&units=metric&apikey=0125b901b6827180ae5f0e1e23ad1827",function(data){
+                    var t_body = "";
+                    console.log("data",data);
+                    t_body += "<tr><td>Weather</td><td><b>" + data.weather[0].description + "</b></td></tr>";
+                    t_body += "<tr><td>Humidity</td><td><b>" + data.main.humidity + "</b></td></tr>";
+                    t_body += "<tr><td>Temperature Max</td><td><b>" + data.main.temp_max + " deg</b></td></tr>";
+                    t_body += "<tr><td>Temperature Min</td><td><b>" + data.main.temp_min + " deg</b></td></tr>";
+                    t_body += "<tr><td>Wind Speed</td><td><b>" + data.wind.speed + " km/h</b></td></tr>";
+                    $("#WeatherResults").show();
+                    $("#WeatherResults").html(t_body);
+                })
+                });
+
+                console.log(lat,lon);
+               
+            }
+        </script>
+        
+    </body>
+</html>
